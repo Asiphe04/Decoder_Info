@@ -1,0 +1,34 @@
+do a decoder from a raw log. 
+precoder
+match something unique
+
+rejex - research
+
+
+-------------
+^- To specify the beginning of the text
+$ - To specify the end of the text
+w+ - A-Z, a-z, 0-9, '-', '@', '_' characters 
+d+ - 0-9 character
+
+--------------------------
+
+regex - regular expression
+
+^example - matches any strig that begins with example 
+
+(\w+) - user name 
+
+(\d+.\d+.\d+.\d+) - Ipv4 address
+
+<order>user, srcip</order> - order that must be processed by
+
+
+-----------------------------
+
+
+
+
+
+
+

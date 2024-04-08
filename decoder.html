@@ -1,0 +1,48 @@
+<!-- /var/ossec/etc/decoders/local_decoder.xml -->
+
+<decoder name="example">
+    <program_name>^example</program_name>
+  </decoder>
+  
+  <decoder name="example">
+    <parent>example</parent>
+    <regex>User '(\w+)' logged from '(\d+.\d+.\d+.\d+)'</regex>
+    <order>user, srcip</order>
+  </decoder>
+
+  <!-- /var/ossec/etc/rules/local_rules.xml -->
+
+  <group name="custom_rules_example,">
+    <rule id="100010" level="0">
+      <program_name>example</program_name>
+      <description>User logged</description>
+    </rule>
+  </group>
+  
+  <!-- /var/ossec/bin/wazuh-logtest -->
+  <!-- Example -->
+
+  <!-- Type one log per line
+
+Dec 25 20:45:02 MyHost example[12345]: User 'admin' logged from '192.168.1.100'
+
+**Phase 1: Completed pre-decoding.
+        full event: 'Dec 25 20:45:02 MyHost example[12345]: User 'admin' logged from '192.168.1.100''
+        timestamp: 'Dec 25 20:45:02'
+        hostname: 'MyHost'
+        program_name: 'example'
+
+**Phase 2: Completed decoding.
+        name: 'example'
+        dstuser: 'admin'
+        srcip: '192.168.1.100'
+
+**Phase 3: Completed filtering (rules).
+        id: '100010'
+        level: '0'
+        description: 'User logged'
+        groups: '['custom_rules_example']'
+        firedtimes: '1'
+        mail: 'False' -->
+
+
